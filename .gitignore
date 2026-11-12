@@ -1,0 +1,27 @@
+# Virtual Environment
+.venv/
+*/.venv/
+
+# Python cache & build
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.pytest_cache/
+*.log
+
+# Large Zip Archives & temporary downloads
+*.zip
+Code.zip
+test-*.zip
+train-*.zip
+
+# Old heavyweight legacy models (>50MB)
+*.h5
+!best_mobilenetv2.weights.h5
+elephant_model_xc.h5
+
+# OS generated files
+.DS_Store
+Thumbs.db
+tuner_dir/

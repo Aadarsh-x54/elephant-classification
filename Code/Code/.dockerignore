@@ -1,0 +1,12 @@
+.venv
+__pycache__
+*.pyc
+.pytest_cache
+tests
+training_curves.png
+confusion_matrix.png
+evaluation_report.json
+training_history.json
+elephant_model_xc.h5
+*.ipynb
+

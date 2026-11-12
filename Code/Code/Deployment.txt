@@ -1,0 +1,25 @@
+# Elephant Classification - Setup & Deployment Guide
+
+# 1. System packages (Linux/Ubuntu)
+sudo apt update && sudo apt upgrade -y
+sudo apt install -y python3-pip python3-venv python3-full
+
+# 2. Navigate to the project code directory
+cd Code/Code
+
+# 3. Create and activate virtual environment
+python3 -m venv .venv
+source .venv/bin/activate
+
+# 4. Install dependencies
+pip install -r requirements.txt
+
+# 5. Train & Evaluate (optional - pre-trained weights are included)
+python train.py
+python evaluate.py
+
+# 6. Run the Streamlit app
+python -m streamlit run app.py
+
+# Background / production run (Linux)
+# nohup python -m streamlit run app.py --server.port 8501 --server.address 0.0.0.0 &

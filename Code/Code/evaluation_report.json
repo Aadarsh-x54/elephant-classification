@@ -1,0 +1,46 @@
+{
+  "accuracy": 0.8776595744680851,
+  "total_samples": 188,
+  "correct_predictions": 165,
+  "class_names": [
+    "African",
+    "Asian"
+  ],
+  "confusion_matrix": [
+    [
+      89,
+      8
+    ],
+    [
+      15,
+      76
+    ]
+  ],
+  "classification_report": {
+    "African": {
+      "precision": 0.8557692307692307,
+      "recall": 0.9175257731958762,
+      "f1-score": 0.8855721393034826,
+      "support": 97.0
+    },
+    "Asian": {
+      "precision": 0.9047619047619048,
+      "recall": 0.8351648351648352,
+      "f1-score": 0.8685714285714285,
+      "support": 91.0
+    },
+    "accuracy": 0.8776595744680851,
+    "macro avg": {
+      "precision": 0.8802655677655677,
+      "recall": 0.8763453041803557,
+      "f1-score": 0.8770717839374556,
+      "support": 188.0
+    },
+    "weighted avg": {
+      "precision": 0.879483769776323,
+      "recall": 0.8776595744680851,
+      "f1-score": 0.8773430718746691,
+      "support": 188.0
+    }
+  }
+}
