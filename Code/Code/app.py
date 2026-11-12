@@ -5,6 +5,7 @@ Created on Fri Jan  2 16:42:32 2026
 @author: User
 """
 
+from pathlib import Path
 import streamlit as st
 import numpy as np
 import json
@@ -38,11 +39,39 @@ def load_artifacts():
     
     model = Model(inputs=base.input, outputs=outputs)
 
+    # Resolve artifact paths relative to this script
+    script_dir = Path(__file__).resolve().parent
+    weights_path = script_dir / 'best_mobilenetv2.weights.h5'
+    indices_path = script_dir / 'class_indices.json'
+
+    # Fallback to current working directory or Code/Code/ if executed from repo root
+    if not weights_path.exists():
+        candidates = [
+            Path('best_mobilenetv2.weights.h5'),
+            Path('Code/Code/best_mobilenetv2.weights.h5'),
+            script_dir / 'Code' / 'Code' / 'best_mobilenetv2.weights.h5'
+        ]
+        for c in candidates:
+            if c.exists():
+                weights_path = c
+                break
+
+    if not indices_path.exists():
+        candidates = [
+            Path('class_indices.json'),
+            Path('Code/Code/class_indices.json'),
+            script_dir / 'Code' / 'Code' / 'class_indices.json'
+        ]
+        for c in candidates:
+            if c.exists():
+                indices_path = c
+                break
+
     #Load the best weights
-    model.load_weights('best_mobilenetv2.weights.h5')
+    model.load_weights(str(weights_path))
     
     #Load class indices
-    with open("class_indices.json") as f:
+    with open(indices_path, "r", encoding="utf-8") as f:
         class_indices = json.load(f)
     
     # Invert mapping
@@ -72,10 +101,3 @@ if uploaded_file is not None:
     
     st.subheader(f"Prediction: **{pred_class}**")
     st.write(f"Confidence (accuracy for this image): **{confidence:.2f}%**")
-    
-    
-    
-    
-    
-    
-    
